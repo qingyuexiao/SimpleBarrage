@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="offset-sm-1 col-sm-10 mt-3">
+                <div class="video-container">
+                    <div class="video">
+                        <!-- vedio -->
+                        <img src="assets/images/video.jpg" width="100%" />
+                    </div>
+                    <div class="barrage-container"></div>
+                </div>
+                <div class="comment-container mt-3">
+                    <form>
+                        <div class="input-group mb-3">
+                            <select class="custom-select" name="fontColor">
+                                <option value="" selected>Normal</option>
+                                <option value="yellow">Yellow</option>
+                                <option value="red">Red</option>
+                                <option value="green">Green</option>
+                            </select>
+                            <input type="text" name="comment" class="form-control" placeholder="Input your comment here..." 
+                                onkeydown="((event)=>{if(event.keyCode == 13) {event.preventDefault(); addComment();}})(event)" />
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button" onclick="addComment();">Send</button>
+                                <button class="btn btn-outline-primary" type="button" onclick="toggleBarrage();">Toggle Barrage</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="js/barrage.js"></script>
+        <script>
+            (function(window, $) {
+
+                window.initialComments = [{
+                    "id": 1,
+                    "text": "真是太有趣了"
+                }, {
+                    "id": 2,
+                    "text": "笑死了"
+                }, {
+                    "id": 3,
+                    "text": "哈哈哈哈哈"
+                }, {
+                    "id": 4,
+                    "text": "这剧情也太狗血了吧"
+                }, {
+                    "id": 5,
+                    "text": "全剧搞笑担当",
+                    "color": "red"
+                }, {
+                    "id": 6,
+                    "text": "哇哈哈哈哈哈"
+                }, {
+                    "id": 7,
+                    "text": "眼泪都笑出来了"
+                }, {
+                    "id": 8,
+                    "text": "妈呀笑屎我了"
+                }, {
+                    "id": 9,
+                    "text": "大半夜的还让我怎么睡觉"
+                }, {
+                    "id": 10,
+                    "text": "笑出猪叫",
+                    "color": "yellow"
+                }, {
+                    "id": 11,
+                    "text": "隔壁邻居肯定以为这里住了个疯子"
+                }, {
+                    "id": 12,
+                    "text": "你俩能好好演不"
+                }, {
+                    "id": 13,
+                    "text": "只有我没看懂吗？",
+                    "color": "green"
+                }, {
+                    "id": 14,
+                    "text": "这是什么梗？？？"
+                }, {
+                    "id": 15,
+                    "text": "什么鬼"
+                }, {
+                    "id": 16,
+                    "text": "喂评论的能不能不要剧透！！！"
+                }, {
+                    "id": 17,
+                    "text": "剧透可耻！"
+                }, {
+                    "id": 18,
+                    "text": "笑疯了"
+                }, {
+                    "id": 19,
+                    "text": "看弹幕比剧还搞笑"
+                }, {
+                    "id": 20,
+                    "text": "就起进来看弹幕"
+                }, {
+                    "id": 21,
+                    "text": "有谁知道结局是什么"
+                }, {
+                    "id": 22,
+                    "text": "一共多少集啊？"
+                }];
+
+                window.toggleBarrage = () => {
+                    barrage.toggleBarrage();
+                }
+
+                window.addComment = () => {
+                    barrage.addComment({
+                        text: document.forms[0].comment.value,
+                        color: document.forms[0].fontColor.value
+                    });
+                }
+
+                var barrage = new Barrage('.barrage-container', {
+                    rows: 5,
+                    initialComments: initialComments,
+                    opacity: 0.8,
+                    // autoStart: false
+                });
+
+             })(window, jQuery);
+        </script>
+    </body>
+</html>
