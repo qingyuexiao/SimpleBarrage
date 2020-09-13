@@ -7,7 +7,7 @@
                 this.setOpacity(options.opacity)
             }
             this.comments = options.initialComments || [];
-            this.rows = options.rows || 5;
+            this.rows = options.rows || 3;
             this.lineHeight = 24;
             this.marginLeft = 50;
             this.latestComments = [];
