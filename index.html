@@ -122,6 +122,8 @@
                         text: document.forms[0].comment.value,
                         color: document.forms[0].fontColor.value
                     });
+                    document.forms[0].comment.value = '';
+                    document.forms[0].comment.focus();
                 }
 
                 var barrage = new Barrage('.barrage-container', {
