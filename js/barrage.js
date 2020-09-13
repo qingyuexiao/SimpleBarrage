@@ -72,7 +72,10 @@
                 };
             }
             var lastItem = this.latestComments[this.latestComments.length - 1],
-                posOfLastItem = lastItem.position(),
+                posOfLastItem = {
+                    left: Number(lastItem.css('left').replace('px', '')),
+                    top: Number(lastItem.css('top').replace('px', ''))
+                },
                 posForNewItem = {};
             if(posOfLastItem.top == (this.lineHeight * (this.rows - 1))) {
                 posForNewItem.top = 0;
